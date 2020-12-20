@@ -1,6 +1,6 @@
 # インターネットに転がっていたイメージ
 # 気にする人は自分でイメージを作ると良い
-image: dgellow/idris:v1.3.3
+image: mmhelloworld/idris:1.3.2
 
 test:
   script:
