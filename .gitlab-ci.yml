@@ -1,0 +1,19 @@
+# インターネットに転がっていたイメージ
+# 気にする人は自分でイメージを作ると良い
+image: dgellow/idris:v1.3.3
+
+test:
+  script:
+    - idris --testpkg anagram.ipkg
+
+pages:
+  script:
+    - idris --mkdoc anagram.ipkg
+    # docker内で生成するとパーミッションの問題が発生するらしく、一旦作り直すと解決する
+    - mkdir public
+    - cp -R anagram_doc/* public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master

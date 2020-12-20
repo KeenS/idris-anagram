@@ -1,0 +1,26 @@
+name: Generate doc
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  doc:
+    runs-on: dgellow/idris:v1.3.3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - run: |
+          idris --mkdoc anagram.ipkg
+          mkdir public
+          cp -R anagram_doc/* public
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: gh-pages
+          build_dir: public
+          jekyll: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

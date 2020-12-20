@@ -1,0 +1,16 @@
+package anagram
+
+version = "0.1.0"
+author = κeen <3han5chou7@gmail.com>
+
+sourcedir = src
+modules = Anagram
+        , AnagramMain
+        , Tests.Anagram
+
+main = AnagramMain
+executable = anagram
+
+tests = Tests.Anagram.test
+
+pkgs = contrib
